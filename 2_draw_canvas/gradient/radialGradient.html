@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drawRect</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                // TODO: 간단한 방사형 그레이디언트
+                let gr = context.createRadialGradient(50, 50, 25, 50, 50, 100);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.fillStyle = gr;
+                context.fillRect(0, 0, 200, 200);
+                */
+
+                /*
+                // TODO: 복잡한 방사형 그레이디언트
+                let gr = context.createRadialGradient(50, 50, 25, 100, 100, 100);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.fillStyle = gr;
+                context.fillRect(0, 0, 200, 200);
+                */
+
+                /*
+                // TODO: 원에 방사형 그레이디언트 적용
+                let gr = context.createRadialGradient(50, 50, 25, 100, 100, 100);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.fillStyle = gr;
+                context.arc(100, 100, 100, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+                context.fill();
+                */
+
+                // TODO: 원호 테두리 그레이디언트
+                let gr = context.createRadialGradient(50, 50, 25, 100, 100, 100);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.strokeStyle = gr;
+                context.arc(100, 100, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+                context.stroke();
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

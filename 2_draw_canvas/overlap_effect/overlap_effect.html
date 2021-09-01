@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>overlap_effect</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                    캔버스에 그림 객체를 그릴 때 투명도와 레이어를 어떻게 조절하는가에 따라 객체의 겹치기 효과를 결정할 수 있다.
+                    이를 위해 globalAlpha와 globalCompositeOperation특성을 사용한다.
+                     * globalAlpha : 기본값은 1.0(완전 불투명)이고 0.0(완전 투명)부터 1.0 사이의 값으로 설정한다. globalAlpha는
+                        캔버스에 도형을 그리기 전에 설정해야 한다.
+                     * globalCompositeOperation : globalCompositeOperation 값은 globalAlpha와 그 밖의 변환을 모두 적용한 후
+                        현재의 캔버스 비트맵 이미지 위에 어떻게 그릴지 설정한다.
+                        copy, destination-atop, destination-in, destination-out, destination-over, lighter, source-atop,
+                        source-in, source-out, source-over, xor
+                 */
+
+                // 화면에 큰 사각형을 그린다.
+                context.fillStyle = "black";
+                context.fillRect(10, 10, 200, 200);
+
+                // globalCompositeOperation 값은 그대로 둔다.
+                // 빨간색 사각형을 그린다.
+                context.fillStyle = "red";
+                context.fillRect(1, 1, 50, 50);
+
+                // source-over로 설정한다.
+                context.globalCompositeOperation = "source-over";
+
+                // 옆에 빨간색 사각형을 그린다.
+                context.fillRect(60, 1, 50, 50);
+
+                // destination-over으로 설정한다.
+                context.globalCompositeOperation = "destination-over";
+                context.fillRect(1, 60, 50, 50);
+
+                // globalAlpha를 설정한다.
+                context.globalAlpha = .5;
+
+                // source-atop으로 설정한다.
+                context.globalCompositeOperation = "source-atop";
+                context.fillRect(60, 60, 50, 50);
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drawRect</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                context.fillStyle = '#aaaaaa';
+                context.fillRect(0, 0, 200, 200);
+                context.fillStyle = '#000000';
+                context.font = '20px _sans';
+                context.textBaseline = 'top';
+                context.fillText("Canvas!", 0, 0);
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

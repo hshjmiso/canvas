@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>move_straight</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            let speed = 5;
+            let x = 20;
+            let y = 0;
+
+            function drawScreen() {
+
+                // TODO: 일직선상으로 이동
+                context.fillStyle = "#EEEEEE";
+                context.fillRect(0, 0, theCanvas.width, theCanvas.height);
+
+                // 사각형 박스
+                context.strokeStyle = "#000000";
+                context.strokeRect(1, 1, theCanvas.width - 2, theCanvas.height - 2);
+
+                // 공을 그린다.
+                y += speed;
+
+                context.fillStyle = "#000000";
+                context.beginPath();
+                context.arc(x, y, 15, 0, Math.PI * 2, true);
+                context.closePath();
+                context.fill();
+            }
+            drawScreen();
+            // setInterval(drawScreen, 33);
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

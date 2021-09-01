@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>region_selection</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                    save() 함수, restore() 함수, 캔버스의 영역 선택 기능을 함께 사용해서 패스를 그리는 영역을 제한할 수 있다.
+                    먼저 rect() 함수로 그림을 그릴 여역을 설정하고, clip()함수를 호출한다. 그러면 rect() 함수로 설정한 사각형만
+                    그리기 영역으로 선택된다.
+                 */
+
+                context.fillStyle = "black";
+                context.fillRect(10, 10, 200, 200);
+                context.save();
+                context.beginPath();
+
+                // 0, 0을 시작점으로 하는 가로, 세로 50인 사각형 영역을 선택한다.
+                context.rect(0, 0, 50, 50);
+                context.clip();
+
+                // 빨간색 원 그리기
+                context.beginPath();
+                context.strokeStyle = "red"; // 표준 색상 이름 사용
+                context.lineWidth = 5;
+                context.arc(100, 100, 100, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+
+                // 원 그리기
+                context.stroke();
+                context.closePath();
+                context.restore();
+
+                // 전체 캔버스를 영역으로 선택한다.
+                context.beginPath();
+                context.rect(0, 0, 500, 500);
+                context.clip();
+
+                // 파란색 원을 그린다.
+                context.beginPath();
+                context.strokeStyle = "blue"; // 표준 색상 이름 사용
+                context.lineWidth = 5;
+                context.arc(100, 100, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+
+                // 원 그리기
+                context.stroke();
+                context.closePath();
+
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

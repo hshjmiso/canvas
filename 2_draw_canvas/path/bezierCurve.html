@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bezierCurve</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                    원호보다 유연한 베지어 곡선(Bezier curve)은 2차(quadratic)와 3차(cubic)의 두 종류가 있다.
+                     * context.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+                     * context.quadraticCurveTo(cpx, cpy, x, y);
+
+                    베지어 곡선은 '시작점', '끝점', 하나 또는 두 개의 '제어점'으로 정의되며, 이 제어점으로 캔버스 상에 곡선을
+                    어떻게 그릴지 결정한다. 제어점이 두 개면 3차 베지어 곡선이고, 하나면 2차 베지어 곡선이다.
+                 */
+
+                context.beginPath();
+                context.strokeStyle = "black";
+                context.lineWidth = 5;
+                context.moveTo(0, 0);
+                context.quadraticCurveTo(100, 25, 0, 50);
+
+                context.stroke();
+                context.closePath();
+
+                context.beginPath();
+                context.strokeStyle = "black";
+                context.lineWidth = 5;
+                context.moveTo(150, 0);
+                context.bezierCurveTo(0, 125, 300, 175, 150, 300);
+
+                context.stroke();
+                context.closePath();
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

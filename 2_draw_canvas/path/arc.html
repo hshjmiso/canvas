@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arc</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                    context.arc()
+                    context.art(x, y, radius, startAngle, endAngle, anticlockwise);
+                    radius는 원호가 그려질 원의 반지름을 의미한다.
+                    startAngle과 endAngle은 일반 각도가 아니라 라디안이다.
+                    anticlockwise는 원호의 방향을 true나 false로 지정한다.
+                 */
+
+                context.beginPath();
+                context.strokeStyle = "black";
+                context.lineWidth = 5;
+                // context.arc(100, 100, 20, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+                // context.arc(100, 100, 20, (Math.PI / 180) * 0, (Math.PI / 180) * 90, false);
+                context.arc(100, 100, 20, (Math.PI / 180) * 0, (Math.PI / 180) * 90, true);
+
+                // 원
+                context.stroke();
+                context.closePath();
+
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

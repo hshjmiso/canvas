@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>linearGradient</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                // TODO: 선형 수평 그레이디언트
+                // 수평 그레이디언트 값은 0이어야 한다.
+                // 왼쪽 상단의 x, y 좌표와 그레이디언트를 끝내는 오른쪽 하단의 x, y 좌표다.
+                let gr = context.createLinearGradient(0, 0, 100, 0);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.fillStyle = gr;
+                context.fillRect(0, 0, 100, 100);
+                */
+
+                /*
+                // TODO: 그레이디언트로 채워진 여러 객체
+                let gr = context.createLinearGradient(0, 0, 100, 0);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.fillStyle = gr;
+                context.fillRect(0, 0, 100, 100);
+                context.fillRect(0, 100, 50, 100);
+                context.fillRect(0, 200, 200, 100);
+                */
+
+                /*
+                // TODO: 수평 그레이디언트 테두리
+                let gr = context.createLinearGradient(0, 0, 100, 0);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // strokeStyle로 그레이디언트를 설정한다.
+                context.strokeStyle = gr;
+                context.strokeRect(0, 0, 100, 100);
+                context.strokeRect(0, 100, 50, 100);
+                context.strokeRect(0, 200, 200, 100);
+                */
+
+                /*
+                // TODO: 복잡한 도형의 수평 그레이디언트
+                let gr = context.createLinearGradient(0, 0, 100, 0);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.fillStyle = gr;
+                context.beginPath();
+                context.moveTo(0, 0);
+                context.lineTo(50, 0);
+                context.lineTo(100, 50);
+                context.lineTo(50, 100);
+                context.lineTo(0, 100);
+                context.lineTo(0, 0);
+                context.stroke();
+                context.fill();
+                context.closePath();
+                */
+
+                /*
+                // TODO: 수직 그레이디언트
+                let gr = context.createLinearGradient(0, 0, 0, 100);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.fillStyle = gr;
+                context.beginPath();
+                context.moveTo(0, 0);
+                context.lineTo(50, 0);
+                context.lineTo(100, 50);
+                context.lineTo(50, 100);
+                context.lineTo(0, 100);
+                context.lineTo(0, 0);
+                // context.stroke();
+                context.fill();
+                context.closePath();
+                */
+
+                /*
+                // TODO: 수직 그레이디언트 테두리
+                let gr = context.createLinearGradient(0, 0, 0, 100);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // strokeStyle로 그레이디언트를 설정한다.
+                context.strokeStyle = gr;
+                context.beginPath();
+                context.moveTo(0, 0);
+                context.lineTo(50, 0);
+                context.lineTo(100, 50);
+                context.lineTo(50, 100);
+                context.lineTo(0, 100);
+                context.lineTo(0, 0);
+                context.stroke();
+                context.closePath();
+                */
+
+                // TODO: 대각선 그레이디언트
+                let gr = context.createLinearGradient(0, 0, 100, 100);
+
+                // 색상 정지점을 추가한다.
+                gr.addColorStop(0, 'rgb(255, 0, 0');
+                gr.addColorStop(0.5, 'rgb(0, 255, 0');
+                gr.addColorStop(1, 'rgb(255, 0, 0');
+
+                // fillStyle로 그레이디언트를 설정한다.
+                context.fillStyle = gr;
+                context.beginPath();
+                context.moveTo(0, 0);
+                context.fillRect(0, 0, 100, 100);
+                context.closePath();
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

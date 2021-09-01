@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "outDir": "lib",
+      "module": "ES2015",
+      "target": "ES2015",
+      "noEmitOnError": true,
+      "lib": ["ES2015", "dom"],
+      "moduleResolution": "node",
+      "declaration": true,
+      // "noImplicitAny": true,
+      // "strict": true
+    },
+    "include": ["./src/*.ts"]
+}
+  

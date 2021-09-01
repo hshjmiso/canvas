@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>repeat</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                    채우기 패턴은 두 개의 매개변수를 갖는 createPattern()함수로 초기화한다. 첫 번째 매개변수는 Image 객체의
+                    인스턴스이고, 두 번째 매개변수는 도형안에 반복되는 패턴을 어떻게 넣을지를 지정하는 문자열이다. 도형에 그릴
+                    채우기 패턴으로 이미지 파일이나 다른 캔버스 전체를 이용하는 것도 가능하다.
+                     * repeat
+                     * repeat-x
+                     * repeat-y
+                     * no-repeat
+                 */
+
+                let fillImg = new Image();
+                fillImg.src = "fill_20x20.png";
+
+                /*
+                // TODO: 이미지 파일을 repeat 방법으로 채우기
+                fillImg.onload = function() {
+                    let fillPattern = context.createPattern(fillImg, "repeat");
+                    context.fillStyle = fillPattern;
+                    context.fillRect(0, 0, 200, 200);
+                }
+                */
+
+                // TODO: no-repeat, repeat-x, repeat-y 문자열 사용
+                // 파이어폭스에서만 다른 결과를 보여준다.
+                fillImg.onload = function() {
+                    let fillPattern1 = context.createPattern(fillImg, "no-repeat");
+                    let fillPattern2 = context.createPattern(fillImg, "repeat-x");
+                    let fillPattern3 = context.createPattern(fillImg, "repeat-y");
+
+                    context.fillStyle = fillPattern1;
+                    context.fillRect(0, 0, 100, 100);
+
+                    context.fillStyle = fillPattern2;
+                    context.fillRect(0, 110, 100, 100);
+
+                    context.fillStyle = fillPattern3;
+                    context.fillRect(0, 220, 100, 100);
+                }
+
+
+
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

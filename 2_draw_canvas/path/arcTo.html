@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arcTo</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                    context.arcTo(x1, y1, x2, y2, radius);
+                    arcTo 메서드는 현재 위치에서 x1, y1 위치까지의 직선과 현재 위치에서 x2, y2 위치까지의 직선을 동시에 접하고
+                    radius 값의 반지름을 갖는 원호를 그린다.
+                 */
+
+                context.beginPath();
+                context.strokeStyle = "black";
+                context.lineWidth = 5;
+                context.moveTo(0, 0);
+                context.lineTo(100, 200);
+                context.arcTo(350, 350, 100, 100, 20);
+
+                context.stroke();
+                context.closePath();
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>

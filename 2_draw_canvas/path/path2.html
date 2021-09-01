@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>path2</title>
+    <script>
+        window.addEventListener("load", eventWindowLoaded, false);
+
+        function eventWindowLoaded () {
+            canvasApp();
+        }
+
+        function canvasApp () {
+            var theCanvas = document.getElementById("canvasOne");
+            var context = theCanvas.getContext("2d");
+
+            if(!theCanvas || !theCanvas.getContext) {
+                console.error("canavs does not exist.");
+            }
+
+            function drawScreen() {
+                /*
+                    lineCap 특성
+                    lineCap은 컨텍스트에 그린 선의 끝 모양을 말하며, 다음 세 가지 중 하나로 설정한다.
+                     * butt 기본값이다. 수직으로 꺽인 납작한 끝 모양이다.
+                     * round 반원 모양이며, 선의 두께가 지름이다.
+                     * square 길이는 선 두께와 같고 폭은 선 두께의 반인 직사각형을 수직으로 납작한 선 끝에 놓은 모양이다.
+
+                    lineJoin 특성
+                    lineJoin은 두 선이 만나는 '모서리'를 말하며, 이 부분은 조인이라고 부른다. 다음 중 한 가지로 lineJoin 특성을
+                    설정하여 조인의 모양을 결정한다.
+                     * miter 기본값이다. 조인에 뾰족한 가장자리를 그린다. miterLimit은 miter 길이와 선 폭의 최대 비율이다.(기본값은 10)
+                     * bevel 조인에 대각선 가장자리를 그린다.
+                     * round 조인에 둥근 가장자리를 그린다.
+
+                    lineWidth
+                    lineWidth(기본값은 1.0)는 선의 두께를 지정한다.
+
+                    strokeStyle
+                    strokeStyle은 선과 테두리에 사용하는 색상이나 스타일을 정의한다.
+                 */
+                // 예 1: round 끝, bevel 조인, 캔버스의 왼쪽 상단에 위치
+                context.strokeStyle = "black"; // 표준 색상 이름 이용.
+                context.lineWidth = 10;
+                context.lineJoin = 'bevel';
+                context.lineCap = 'round';
+                context.beginPath();
+                context.moveTo(0, 0);
+                context.lineTo(25, 0);
+                context.lineTo(25, 25);
+                context.stroke();
+                context.closePath();
+
+                // 예 2: round 끝, bevel 조인, 캔버스의 왼쪽이나 위에 위치하지 않음
+                context.beginPath();
+                context.moveTo(10, 50);
+                context.lineTo(35, 50);
+                context.lineTo(35, 75);
+                context.stroke();
+                context.closePath();
+
+                // 예 2: butt 끝, round 조인, 캔버스의 왼쪽이나 위에 위치하지 않음
+                context.lineJoin = 'round';
+                context.lineCap = 'butt';
+                context.beginPath();
+                context.moveTo(10, 100);
+                context.lineTo(35, 100);
+                context.lineTo(35, 125);
+                context.stroke();
+                context.closePath();
+
+                /*
+                    캔버스 패스는 시작 픽셀의 중심부터 x와 y 방향으로 나간다. 그래서 첫 번째 예의 가로 선이 설정한 10px보다
+                    더 얇게 보인다. 그리고 가로 선 왼쪽의 둥근 끝 모양은 화면의 마이너스 좌표에 그려져서 보이지도 않는다.
+                    게다가 lineJoin으로 설정 한 대각선 모양의 'bevel'도 보이지 않는다.
+                 */
+            }
+            drawScreen();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvasOne" width="500" height="300"/>
+</body>
+</html>
